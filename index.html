@@ -9,10 +9,15 @@
   <div id="content"></div>
     <script>
       fetch("https://ci-swapi.herokuapp.com/api/")
-      .then(resonse => resonse.jason())
-      .then(data => {
-          document.getElementById("content").innerText = data.people;
+      .then(resonse => resonse.text())
+      .then(data => displayData(data))
+      .catch((e) => {
+        console.error("Error: ", e);
       })
+
+      function displayData(data) {
+        document.getElementById("content").innerText = data;
+      }
     </script>
   
 </body>
